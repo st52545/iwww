@@ -1,0 +1,31 @@
+body {
+	background-color: #0c0c0c;
+	color: white;
+	align-items: center;
+	width: 800px;
+	margin: auto;
+	margin-top: 50px;
+	text-align: center;
+	font-family: "Roboto Condensed";
+	font-size: 15px;
+}
+
+#osudaje, #vzdelani, #jazyky, #znalosti {
+	background-color: #111111;
+	width: 100%;
+	padding: 20px 0px 20px 0px;
+	margin: 20px;
+
+}
+
+.bold {
+	font-weight: bold;
+}
+
+h1 {
+	color: #b5e7ff;
+	font-weight: normal;
+	font-size: 25px;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
