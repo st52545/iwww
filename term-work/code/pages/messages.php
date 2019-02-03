@@ -90,6 +90,12 @@ if (isset($_GET["read"])) {
     $conn->query($sql5);
 }
 
+if (isset($_GET["delete"])) {
+    $idmessage = $_GET["delete"];
+    $sql6 = "DELETE FROM zpravy WHERE id=".$idmessage;
+    $conn->query($sql6);
+}
+
 $sql = "SELECT * FROM zpravy where adresat_id = ". $_SESSION["id"] . " and precteno = 0 order by datum desc;";
 $result = $conn->query($sql);
 
@@ -99,6 +105,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $idmessage = $row["id"];
         $sentfrom = getUsername($row["odesilatel_id"]);
+        if ($sentfrom == 'admin' || $sentfrom == 'spravce') {
+            $sentfrom = 'Library';
+        }
         $sentto = getUsername($_SESSION["id"]);
         $message = $row["zprava"];
         $date = $row["datum"];
@@ -106,7 +115,7 @@ if ($result->num_rows > 0) {
         <div class="messages">
             <p><b>From: <?=$sentfrom?></b> [<?=$date?>]</p>
             <p id="message"><?=$message?></p>
-            <a href="?page=messages&read=<?=$idmessage?>">Mark as read</a> <a href="?page=messages&reply=<?=$sentfrom?>">Reply</a>
+            <a href="?page=messages&read=<?=$idmessage?>">Mark as read</a> <a href="?page=messages&reply=<?=$sentfrom?>">Reply</a> <a href="?page=messages&delete=<?=$idmessage?>">Delete</a>
         </div>
 <?php
     }
@@ -117,7 +126,11 @@ $result2 = $conn->query($sql2);
 if ($result2->num_rows > 0) {
     echo "<h2>Old messages</h2>";
     while ($row2 = $result2->fetch_assoc()) {
+        $idmessage = $row2["id"];
         $sentfrom = getUsername($row2["odesilatel_id"]);
+        if ($sentfrom == 'admin' || $sentfrom == 'spravce') {
+            $sentfrom = 'Library';
+        }
         $sentto = getUsername($_SESSION["id"]);
         $message = $row2["zprava"];
         $date = $row2["datum"];
@@ -125,7 +138,8 @@ if ($result2->num_rows > 0) {
         <div class="messages">
             <p><b>From: <?=$sentfrom?></b> [<?=$date?>]</p>
             <p id="message"><?=$message?></p>
-            <a href="?page=messages&reply=<?=$sentfrom?>">Reply</a>
+            <a href="?page=messages&reply=<?=$sentfrom?>">Reply</a> <a href="?page=messages&delete=<?=$idmessage?>">Delete</a>
+
         </div>
         <?php
     }
