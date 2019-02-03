@@ -14,6 +14,7 @@ include_once './data/functions.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <div class="bg">
         <div class="content">
             <header>
                 <nav class="menu">
@@ -75,9 +76,10 @@ include_once './data/functions.php';
                 } else {
                     ?>
                     <section class="content mainpage">
-                        <h1>Welcome to the library</h1>
+                        <h2>Welcome to the library</h2>
                         <p>Here you can borrow books from our library for free!</p>
-                        <p>If you are new here, please register in order to be able to borrow books</p>
+                        <p>Please login or register in order to be able to borrow books</p><br>
+                        <p>Page was created as a university project for subject IWWW in 2019. Created by Jan Pařízek.</p>
                     </section>
 
                     <?php
@@ -87,7 +89,8 @@ include_once './data/functions.php';
                 ?>
 
             </div>
-        </div>        
+        </div>
+        </div>
     <footer>
         <p>This project was created as a university project for subject IWWW in 2019.</p>
         <p>Project was made by Jan Pařízek, student of Information Technologies in Univerzita Pardubice.</p>

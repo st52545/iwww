@@ -1,13 +1,19 @@
-body {
 
-    font-family: "Sarabun";
-    background-image: url("https://i.imgur.com/P1TLR6t.jpg");
+body {
+    background-image: url("https://i.imgur.com/VCgNexm.jpg");
+
+
+
     background-repeat: no-repeat;
-    background-size: auto;
-    position: relative;
+    background-size: cover;
+}
+
+.mainpage {
+    text-align: center;
 }
 
 .content {
+
     padding: 10px;
     width: 1000px;
     min-height: 1000px;
@@ -51,7 +57,7 @@ tr:hover {
 }
 
 th {
-    background-color: #3d3020;
+    background-color: #2d251f;
     color: white;
     text-align: center;
 }

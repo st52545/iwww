@@ -19,6 +19,13 @@ if (isset($_GET["book"])) {
     $genre = $row["zanr"];
     $year = $row["rokVydani"];
     $desc = $row["popis"];
+    $idauthor = $row["autor_id"];
+
+    $sql4 = "SELECT * FROM autori WHERE id=".$idauthor;
+    $result4 = $conn->query($sql4);
+    $row4 = $result4->fetch_assoc();
+    $authorname = $row4["jmeno"];
+    $authorsurname = $row4["prijmeni"];
 
     $sql2 = "SELECT ROUND(AVG(hodnoceni),1) as prumer FROM recenze WHERE kniha_id=".$idbook;
     $result2 = $conn->query($sql2);
@@ -39,7 +46,7 @@ if (isset($_GET["book"])) {
 ?>
 
 <div class="book">
-    <h2><?=$bookname?> (Autor)</h2>
+    <h2><?=$bookname?> (<?=$authorname . ' ' . $authorsurname?>)</h2>
     <div id="details">
         <p>Year of release: <?=$year?></p>
         <h4>Description</h4>
